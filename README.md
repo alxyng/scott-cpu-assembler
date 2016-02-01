@@ -1,6 +1,6 @@
 # Scott CPU assembler
 
-A machine code assembler for the Scott CPU designed in the book [But How Do It Know?](http://www.buthowdoitknow.com/)
+A machine code assembler for the CPU designed in the book [But How Do It Know?](http://www.buthowdoitknow.com/) by J. Clark Scott.
 
 ## Build
 
@@ -34,8 +34,9 @@ my_assembly_file2 -> my_assembly_file2.bin
 ## Instruction Set
 
 ### Arithmetic and Logic Instructions
+
 Opcode (binary)|Opcode (hex)|Mnemonic|Operands|Description|Operation|Flags|#Clocks
--|-|-|-|-|-|-
+---|---|---|---|---|---|---|---
 1000&#95;&#95;&#95;&#95;|8&#95;|ADD|RA, RB|Add the contents of RA to RB and store result in RB|RB ← RA + RB|C, A, E, Z|3
 1001&#95;&#95;&#95;&#95;|9&#95;|SHR|RA, RB|Right shift the contents of RA and store result in RB|RB ← RA >> 1|C, A, E, Z|3
 1010&#95;&#95;&#95;&#95;|A&#95;|SHL|RA, RB|Left shift the contents of RA and store result in RB|RB ← RA << 1|C, A, E, Z|3
@@ -46,19 +47,22 @@ Opcode (binary)|Opcode (hex)|Mnemonic|Operands|Description|Operation|Flags|#Cloc
 1111&#95;&#95;&#95;&#95;|F_|CMP|RA, RB|Compare RA and RB|RA - RB|A, E, Z|3
 
 ### Load and Store Instructions
+
 Opcode (binary)|Opcode (hex)|Mnemonic|Operands|Description|Operation|Flags|#Clocks
--|-|-|-|-|-|-
+---|---|---|---|---|---|---|---
 0000&#95;&#95;&#95;&#95;|0&#95;|LD|RA, RB|Load RB from RAM at RAM address in RA|RB ← [RA]|-|(2) 3
 0001&#95;&#95;&#95;&#95;|1&#95;|ST|RA, RB|Store RB into RAM at RAM address in RA|[RA] ← RB|-|(2) 3
 
 ### Data Instruction
+
 Opcode (binary)|Opcode (hex)|Mnemonic|Operands|Description|Operation|Flags|#Clocks
--|-|-|-|-|-|-
+---|---|---|---|---|---|---|---
 001000&#95;&#95;|2&#95;|DATA|RB, K|Load byte constant, K into RB|RB ← K|-|3
 
 ### Branch Instructions
+
 Opcode (binary)|Opcode (hex)|Mnemonic|Operands|Description|Operation|Flags|#Clocks
--|-|-|-|-|-|-
+---|---|---|---|---|---|---|---
 001100&#95;&#95;|3&#95;|JMPR|RB|Jump to the RAM address stored in RB|IAR ← RB|-|(1) 3
 01000000|40|JMP|K|Jump to the RAM address K|IAR ← K|-|(2) 3
 01011000|58|JC|K|Jump to RAM address K if the 'carry' flag is set|If (C == 1) then IAR ← K|-|3
@@ -78,13 +82,15 @@ Opcode (binary)|Opcode (hex)|Mnemonic|Operands|Description|Operation|Flags|#Cloc
 01011111|5F|JCAEZ|K|Jump to RAM address K if C or A or E or Z are set|If (C == 1 or A ==1 or E == 1 or Z == 1) then IAR ← K|-|3
 
 ### Clear Flags Instruction
+
 Opcode (binary)|Opcode (hex)|Mnemonic|Operands|Description|Operation|Flags|#Clocks
--|-|-|-|-|-|-
+---|---|---|---|---|---|---|---
 01100000|60|CLF|-|Clear all flags|C = A = E = Z = 0|C, A, E, Z|(1) 3
 
 ### IO Instructions
+
 Opcode (binary)|Opcode (hex)|Mnemonic|Operands|Description|Operation|Flags|#Clocks
--|-|-|-|-|-|-
+---|---|---|---|---|---|---|---
 011100&#95;&#95;|7&#95;|IND|RB|Input IO data to RB|IO (data) ← RB|-|(1) 3
 011101&#95;&#95;|7&#95;|INA|RB|Input IO address to RB|IO (address) ← RB|-|(1) 3
 011110&#95;&#95;|7&#95;|OUTD|RB|Output RB to IO as data|RB ← IO (data)|-|(1) 3

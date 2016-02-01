@@ -1,0 +1,9 @@
+# Build files
+sca
+examples/*.bin
+
+# Debug files
+*.dSYM
+
+# Mac OS X
+.DS_Store

@@ -69,9 +69,7 @@ static const instruction instructions[] = {
     {"OUTA", 0x7c, OPERANDS_RB}
 };
 
-static inline int inject_ra(char *pch, int line_no, unsigned char *pos,
-    char *errstr)
-{
+static inline int inject_ra(char *pch, int line_no, unsigned char *pos, char *errstr) {
     /* OR opcode with value for RA */
     if (strcmp(pch, "r1") == 0) {
         *pos |= 0x04;
@@ -88,9 +86,7 @@ static inline int inject_ra(char *pch, int line_no, unsigned char *pos,
     return 0;
 }
 
-static inline int inject_rb(char *pch, int line_no, unsigned char *pos,
-    char *errstr)
-{
+static inline int inject_rb(char *pch, int line_no, unsigned char *pos, char *errstr) {
     /* OR opcode with value for RB */
     if (strcmp(pch, "r1") == 0) {
         *pos |= 0x01;
@@ -109,9 +105,8 @@ static inline int inject_rb(char *pch, int line_no, unsigned char *pos,
 
 /* If a constant cannot be parsed i.e. it's in an invalid format or is a string
  * rather than a number, zero will be written. */
-static int parse_constant(char *pch, int line_no, unsigned char *pos,
-    char *errstr)
-{
+
+static int parse_constant(char *pch, int line_no, unsigned char *pos, char *errstr) {
     char *pch_end;
     long int k;
 
@@ -145,9 +140,7 @@ static int parse_constant(char *pch, int line_no, unsigned char *pos,
     return 0;
 }
 
-int check_output_length(int line_no, unsigned char *out, unsigned char *pos,
-    char *errstr)
-{
+int check_output_length(int line_no, unsigned char *out, unsigned char *pos, char *errstr) {
     if (pos - out >= OUT_LEN) {
         snprintf(errstr, ERR_LEN, "%d: %s %u %s", line_no,
             "Resulting file too large - output file size limit:", OUT_LEN,
@@ -164,9 +157,8 @@ int check_output_length(int line_no, unsigned char *out, unsigned char *pos,
  * to one opcode then *pos is incremented by 1, two opcodes and *pos is
  * incremented by 2. The function returns 0 on success, -1 on error with
  * errstr set appropriately. */
-static int parse_line(char *line, int line_no, unsigned char *out,
-    unsigned char **pos, char *errstr)
-{
+
+static int parse_line(char *line, int line_no, unsigned char *out, unsigned char **pos, char *errstr) {
     char *pch, *pch_up;
     unsigned char padding;
     const instruction *inst;
@@ -350,9 +342,7 @@ static int parse_line(char *line, int line_no, unsigned char *out,
     return 0;
 }
 
-static ssize_t parse_source_file(FILE *file, unsigned char *out,
-    char *errstr)
-{
+static ssize_t parse_source_file(FILE *file, unsigned char *out, char *errstr) {
     char *line;
     size_t linecap;
     ssize_t linelen;

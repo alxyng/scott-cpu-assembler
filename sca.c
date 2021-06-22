@@ -25,8 +25,8 @@ typedef struct instruction {
 static const instruction instructions[] = {
     /* Arithmetic and Logic Instructions */
     {"ADD", 0x80, OPERANDS_RA_RB},
-    {"SHR", 0x90, OPERANDS_RA_RB},
-    {"SHL", 0xa0, OPERANDS_RA_RB},
+    {"SHL", 0x90, OPERANDS_RA_RB},
+    {"SHR", 0xa0, OPERANDS_RA_RB},
     {"NOT", 0xb0, OPERANDS_RA_RB},
     {"AND", 0xc0, OPERANDS_RA_RB},
     {"OR", 0xd0, OPERANDS_RA_RB},

@@ -38,8 +38,8 @@ my_assembly_file2 -> my_assembly_file2.bin
 Opcode (binary)|Opcode (hex)|Mnemonic|Operands|Description|Operation|Flags|#Clocks
 ---|---|---|---|---|---|---|---
 1000&#95;&#95;&#95;&#95;|8&#95;|ADD|RA, RB|Add the contents of RA to RB and store result in RB|RB ← RA + RB|C, A, E, Z|3
-1001&#95;&#95;&#95;&#95;|9&#95;|SHR|RA, RB|Right shift the contents of RA and store result in RB|RB ← RA >> 1|C, A, E, Z|3
-1010&#95;&#95;&#95;&#95;|A&#95;|SHL|RA, RB|Left shift the contents of RA and store result in RB|RB ← RA << 1|C, A, E, Z|3
+1001&#95;&#95;&#95;&#95;|9&#95;|SHL|RA, RB|Left shift the contents of RA and store result in RB|RB ← RA << 1|C, A, E, Z|3
+1010&#95;&#95;&#95;&#95;|A&#95;|SHR|RA, RB|Right shift the contents of RA and store result in RB|RB ← RA >> 1|C, A, E, Z|3
 1011&#95;&#95;&#95;&#95;|B&#95;|NOT|RA, RB|NOT RA and store the result in RB|RB ← ~RA|A, E, Z|3
 1100&#95;&#95;&#95;&#95;|C&#95;|AND|RA, RB|AND RA and RB and store the result in RB|RB ← RA & RB|A, E, Z|3
 1101&#95;&#95;&#95;&#95;|D&#95;|OR|RA, RB|OR RA and RB and store the result in RB|RB ← RA &#124; RB|A, E, Z|3
